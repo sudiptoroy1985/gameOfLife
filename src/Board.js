@@ -9,9 +9,14 @@ export class Board {
         this.cells = cells;
     }
 
-    getCell(current, end){
+    getCell(current, endIdx){
         let currentIdx = this.cells.indexOf(current);
-        return this.cells[currentIdx + end];
+        let toTraverseIndex = currentIdx + endIdx;
+        if((currentIdx + endIdx) >= this.cells.length){
+          return this.cells[this.cells.length - toTraverseIndex]
+        }else{
+        return this.cells[toTraverseIndex];
+        }
     }
 
 }

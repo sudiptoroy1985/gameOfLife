@@ -5,7 +5,7 @@ export class Player {
 
     money = 1000;
 
-    currentCell = {};
+    currentCell = undefined;
 
     constructor(board){
         this.board = board;
