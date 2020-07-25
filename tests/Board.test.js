@@ -9,7 +9,7 @@ test('should have empty contents', () => {
 test('should have correct cells', () => {
   let board = new Board([new EmptyCell(), new JailCell()]);
   expect(board.cells.length).toBe(2);
-});
+}); 
 
 test('should return correct cell', () => {
   let board = new Board(

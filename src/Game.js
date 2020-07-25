@@ -5,10 +5,10 @@ import { Player } from './Player.js';
 
 export class Game {
 
-    player = {};
+    player = undefined;
 
-     init() {
-        let cells = 'E,E,J,E'.split(',').map(input => {
+     init(input) {
+        let cells = input.split(',').map(input => {
             return this.getCellMap().get(input);
         });
 
@@ -16,14 +16,14 @@ export class Game {
         this.player = new Player(board);
     }
 
-    play(){
-      [1,2,1].forEach(moveIdx => {
+    play(moves){
+      moves.forEach(moveIdx => {
             this.player.move(moveIdx);
         })
     }
 
     getResult(){
-        console.log(this.player.getMoney());
+        return this.player.getMoney();
     }
 
     getCellMap(){
