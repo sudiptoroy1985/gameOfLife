@@ -13,10 +13,9 @@ export class Board {
         let currentIdx = this.cells.indexOf(current);
         let toTraverseIndex = currentIdx + endIdx;
         if((currentIdx + endIdx) >= this.cells.length){
-          return this.cells[this.cells.length - toTraverseIndex]
-        }else{
-        return this.cells[toTraverseIndex];
+          return this.cells[toTraverseIndex - this.cells.length]
         }
+        return this.cells[toTraverseIndex];
     }
 
 }

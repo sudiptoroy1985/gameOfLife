@@ -3,6 +3,7 @@ import { Board } from '../src/Board.js';
 import { JailCell } from '../src/Cell.js';
 import { EmptyCell } from '../src/Cell';
 
+let boardMock = jest.spyOn(Board.prototype, 'getCell');
 
 test('should create player with defaults', () => {
     let player = new Player(new Board());
@@ -13,11 +14,14 @@ test('should create player with defaults', () => {
 
 
 test('should deduct money from player when player lands on jail', () => {
-    jest.spyOn(Board.prototype, 'getCell')
-        .mockImplementation(() => new JailCell())
+    boardMock.mockImplementation(() => new JailCell())
     let player = new Player(new Board());
     expect(player.getMoney()).toBe(1000);
     player.move(12);
     expect(player.getMoney()).toBe(750);
 });
+
+afterEach(() => {
+    boardMock.mockClear();
+})
 

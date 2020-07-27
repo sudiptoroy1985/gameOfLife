@@ -18,6 +18,6 @@ test('should return result if initialized', () => {
 test('should play number of moves for initialized player ', () => {
     let game = new Game();
     game.init('J,E,J,J');
-    game.play([1,2,1,1]);
+    game.play([1,2,2,3]);
     expect(game.getResult()).toBe(0);
 });
