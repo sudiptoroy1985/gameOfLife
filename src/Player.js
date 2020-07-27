@@ -2,15 +2,13 @@ import { Board } from './Board.js';
 
 
 export class Player {
-
-    id = 0;
-
-    money = 1000;   
-
+    
+    money = 1000;  
     currentCell = undefined;
 
-    constructor(board){
+    constructor(board, id){
         this.board = board;
+        this.id = id;
     }
 
     move(moveIdx) {
