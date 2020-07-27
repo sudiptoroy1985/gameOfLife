@@ -12,3 +12,9 @@ export class JailCell extends Cell {
         return money - 250;
     }
 }
+
+export class TreasureCell extends Cell {
+    execute(money){
+        return money + 200;
+    }
+}

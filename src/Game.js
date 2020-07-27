@@ -1,4 +1,4 @@
-import { Cell, EmptyCell, JailCell } from './Cell.js'
+import { Cell, EmptyCell, JailCell, TreasureCell } from './Cell.js'
 import { Board } from './Board.js'
 import { Player } from './Player.js';
 
@@ -29,7 +29,8 @@ export class Game {
     getCellMap(){
         let cellmap = new Map();
         cellmap.set('E', new EmptyCell());
-        cellmap.set('J', new JailCell())
+        cellmap.set('J', new JailCell());
+        cellmap.set('T', new TreasureCell())
         return cellmap;
     }
 }
