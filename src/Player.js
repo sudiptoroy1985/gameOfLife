@@ -3,7 +3,9 @@ import { Board } from './Board.js';
 
 export class Player {
 
-    money = 1000;
+    id = 0;
+
+    money = 1000;   
 
     currentCell = undefined;
 

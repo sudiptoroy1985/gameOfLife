@@ -1,29 +1,36 @@
 import { Cell, EmptyCell, JailCell, TreasureCell } from './Cell.js'
 import { Board } from './Board.js'
 import { Player } from './Player.js';
+import { PlayerResult } from './PlayerResult.js';
 
 
 export class Game {
 
-    player = undefined;
+    players = [];
 
-     init(input) {
+     init(input, numberOfPlayers) {
         let cells = input.split(',').map(input => {
             return this.getCellMap().get(input);
         });
 
         let board = new Board(cells);
-        this.player = new Player(board);
+
+        while(numberOfPlayers > 0){
+            this.players.push(new Player(board, numberOfPlayers));
+            numberOfPlayers--;
+        }
     }
 
     play(moves){
       moves.forEach(moveIdx => {
-            this.player.move(moveIdx);
+          this.players.forEach(player => {
+              player.move(moveIdx);
+          })
         })
     }
 
     getResult(){
-        return this.player.getMoney();
+        return this.players.map(player => new PlayerResult(player.id, player.getMoney()));
     }
 
     getCellMap(){
