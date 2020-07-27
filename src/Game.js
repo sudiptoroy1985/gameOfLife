@@ -9,16 +9,17 @@ export class Game {
     players = [];
 
      init(input, numberOfPlayers) {
-        let cells = input.split(',').map(input => {
-            return this.getCellMap().get(input);
-        });
+        this.assignPlayers(this.createBoard(input), numberOfPlayers)
+    }
 
-        let board = new Board(cells);
+    createBoard(input){
+        return new Board(input.split(',')
+                            .map(input => this.getCellMap().get(input)))
+    }
 
-        while(numberOfPlayers > 0){
-            this.players.push(new Player(board, numberOfPlayers));
-            numberOfPlayers--;
-        }
+    assignPlayers(board, numberOfPlayers){
+        Array.from(new Array(numberOfPlayers), 
+            (x, i) => this.players.push(new Player(board, i)))
     }
 
     play(moves){
