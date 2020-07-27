@@ -14,3 +14,10 @@ test('should return result if initialized', () => {
     game.init('E,E,J,E');
     expect(game.getResult()).toBe(1000);
 });
+
+test('should play number of moves for initialized player ', () => {
+    let game = new Game();
+    game.init('J,E,J,J');
+    game.play([1,2,1,1]);
+    expect(game.getResult()).toBe(0);
+});
