@@ -12,8 +12,8 @@ export class Player {
     }
 
     move(moveIdx) {
-        this.currentCell = this.board.getCell(this.currentCell, moveIdx);
-        this.money = this.currentCell.execute(this.money);
+        (this.currentCell = this.board.getCell(this.currentCell, moveIdx))
+            .execute(this);
     }
 
     getMoney() {
