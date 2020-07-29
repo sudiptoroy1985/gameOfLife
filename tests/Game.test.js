@@ -42,16 +42,32 @@ test('should return result if initialized', () => {
 test('should play number of moves for initialized player for empty and jail cells', () => {
     let game = new Game();
     game.init('J,E,J,J',1);
-    game.play([1,2,2,3]);
+    game.play([1,2,2,3]); 
     const expected = new PlayerResult(0,0);
     expect(game.getResult()).toEqual([{...expected}]);
 });
 
-test('should play number of moves for initialized player for empty , jail and treasure cells', () => {
+test('should play number of moves for single initialized player for empty , jail and treasure cells', () => {
     let game = new Game();
     game.init('J,E,J,J,T,T,J,E',1);
     game.play([1,2,2,3,5]);
     const expected = new PlayerResult(0,900);
     expect(game.getResult()).toEqual([{...expected}]);
 });
+
+test('should play number of moves for multiple players for empty , jail and treasure cells', () => {
+    let game = new Game();
+    game.init('J,E,J,J,T,T,J,E',3);
+    game.play([1,2,2,3,5,1]);
+    const expectedPlayer1Result = new PlayerResult(0,500);
+    const expectedPlayer2Result = new PlayerResult(1,750);
+    const expectedPlayer3Result = new PlayerResult(2,750);
+    expect(game.getResult()).toEqual([
+        {...expectedPlayer1Result},
+        {...expectedPlayer2Result},
+        {...expectedPlayer3Result}]
+    );
+});
+
+
 
