@@ -55,6 +55,14 @@ test('should play number of moves for single initialized player for empty , jail
     expect(game.getResult()).toEqual([{...expected}]);
 });
 
+test('should play number of moves for single initialized player for empty , jail , treasure and hotel cells', () => {
+    let game = new Game();
+    game.init('J,E,J,J,T,T,J,H',1);
+    game.play([1,4,1,2]);
+    const expected = new PlayerResult(0,950);
+    expect(game.getResult()).toEqual([{...expected}]);
+});
+
 test('should play number of moves for multiple players for empty , jail and treasure cells', () => {
     let game = new Game();
     game.init('J,E,J,J,T,T,J,E',3);

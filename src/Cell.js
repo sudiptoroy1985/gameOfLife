@@ -18,3 +18,11 @@ export class TreasureCell extends Cell {
         return money + 200;
     }
 }
+
+export class HotelCell extends Cell {
+    execute(money){
+        return money >= 200 ? 
+        money - 200 : 
+        money;
+    }
+}

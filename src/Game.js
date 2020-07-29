@@ -1,4 +1,4 @@
-import { Cell, EmptyCell, JailCell, TreasureCell } from "./Cell.js";
+import { Cell, EmptyCell, JailCell, TreasureCell, HotelCell } from "./Cell.js";
 import { Board } from "./Board.js";
 import { Player } from "./Player.js";
 import { PlayerResult } from "./PlayerResult.js";
@@ -46,6 +46,7 @@ export class Game {
     cellmap.set("E", new EmptyCell());
     cellmap.set("J", new JailCell());
     cellmap.set("T", new TreasureCell());
+    cellmap.set("H", new HotelCell());
     return cellmap;
   }
 }
